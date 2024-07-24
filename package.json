@@ -1,9 +1,19 @@
 {
   "name": "luciano-react-router",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "type": "module",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "lib/src/index.js",
+  "module": "lib/src/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "import":{
+        "default": "./lib/src/index.js",
+        "types": "./types/index.d.ts"
+      }
+    },
+    "./types": "./types/index.d.ts"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
