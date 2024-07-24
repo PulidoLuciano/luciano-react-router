@@ -18,7 +18,7 @@ export function Router(routes = [], DefaultComponent){
         }
     }, []);
 
-    const routeParams = {};
+    let routeParams = {};
 
     const routesFromChildren = Children.map(children, ({props, type}) => {
         const {name} = type;
