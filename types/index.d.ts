@@ -1,12 +1,9 @@
-import { ReactNode } from "react";
-
 export interface RouteObject {
     path : string;
-    component: ReactNode;
+    component: () => JSX.Element;
 }
+export declare function Link({href, target, ...props} : {href : string, target? : string, children?: React.ReactNode, className?: string}) : JSX.Element
 
-export declare function Link({href, target, ...props} : {href : string, target : string}) : ReactNode
+export declare function Route({path, component} : {path : string, component : () => JSX.Element}) : null
 
-export declare function Route({path, component} : {path : string, component : ReactNode}) : null
-
-export declare function Router({routes, defaultComponent} : {routes : Array<RouteObject>, defaultComponent : ReactNode}) : ReactNode
+export declare function Router({children, routes, defaultComponent} : {children? : () => JSX.Element, routes? : Array<RouteObject>, defaultComponent : () => JSX.Element}) : JSX.Element

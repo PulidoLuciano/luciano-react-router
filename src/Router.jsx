@@ -1,7 +1,7 @@
 import { match } from "path-to-regexp";
 import { Children, useEffect, useState } from "react";
 
-export function Router(routes = [], DefaultComponent){
+export function Router({children, routes = [], defaultComponent : DefaultComponent = () => null}){
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
     
     useEffect(() => {
@@ -23,9 +23,11 @@ export function Router(routes = [], DefaultComponent){
     const routesFromChildren = Children.map(children, ({props, type}) => {
         const {name} = type;
         return name === "Route" ? props : null;
-    })
+    });
 
-    const Page = routes.find(({path}) =>{
+    const routesToUse = routes.concat(routesFromChildren);
+
+    const Page = routesToUse.find(({path}) =>{
         if(path === currentPath) return true;
 
         const matcherUrl = match(path, {decode: decodeURIComponent});
@@ -34,7 +36,7 @@ export function Router(routes = [], DefaultComponent){
 
         routeParams = matched.params;
         return true;
-    })?.Component;
+    })?.component;
 
     return Page ? <Page routeParams={routeParams}/> : <DefaultComponent routeParams={routeParams}/>
 }
