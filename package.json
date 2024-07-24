@@ -1,6 +1,6 @@
 {
   "name": "luciano-react-router",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "type": "module",
   "main": "lib/src/index.js",
   "module": "lib/src/index.js",
