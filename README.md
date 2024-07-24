@@ -1,1 +1,1 @@
-A simple router for SWA on react.
+A simple router for SPAs on react.
