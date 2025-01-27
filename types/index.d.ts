@@ -1,7 +1,7 @@
-import { LazyExoticComponent } from "react";
+import { JSX, LazyExoticComponent } from "react";
 
-type LazyComponent = LazyExoticComponent<() => JSX.Element>
-type NormalComponent = () => JSX.Element
+type LazyComponent = LazyExoticComponent<({} : any) => JSX.Element>
+type NormalComponent = ({} : any) => JSX.Element
 
 export interface RouteObject {
     path : string;
